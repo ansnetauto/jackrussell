@@ -1,0 +1,75 @@
+Quiz 1 answers.
+~$ grep -o '[0-9]' jack_ascii.txt | sort | uniq -c
+     21 0
+--------------------------------------------------------------------
+Quiz 2 answers.
+~$ grep -o -E '[[:alpha:]]' jack_ascii.txt | sort | uniq -c
+     21 K
+      9 M
+      7 N
+     18 O
+     22 W
+     13 X
+     51 c
+     70 d
+     36 k
+    307 l
+    239 o
+     35 x
+--------------------------------------------------------------------
+#Quiz 3 answers.
+
+import re
+
+with open("jack_ascii.txt", "r") as f:
+    jack_ascii = f.read()
+
+#1: find all the instances of the letter 'o'
+pattern = r"o"
+result1 = re.findall(pattern, jack_ascii)
+print("Exercise 1:", result1)
+
+#2: find all the instances of the word 'll'
+pattern = r"ll"
+result2 = re.findall(pattern, jack_ascii)
+print("Exercise 2:", result2)
+
+#3: find all the instances of the word 'dog'
+pattern = r"dog"
+result3 = re.findall(pattern, jack_ascii)
+print("Exercise 3:", result3)
+
+#4: find all the instances of the letter 'l' at the end of a word
+pattern = r"l\b"
+result4 = re.findall(pattern, jack_ascii)
+print("Exercise 4:", result4)
+
+#5: find all the instances of the letter 'o' that is not followed by the letter 'l'
+pattern = r"o(?![a-z]l)"
+result5 = re.findall(pattern, jack_ascii)
+print("Exercise 5:", result5)
+
+#6: find all the instances of the letter 'o' or 'O'
+pattern = r"[oO]"
+result6 = re.findall(pattern, jack_ascii)
+print("Exercise 6:", result6)
+
+#7: find all the instances of a word that starts with 'k' and ends with 'l'
+pattern = r"\bk\w*l\b"
+result7 = re.findall(pattern, jack_ascii)
+print("Exercise 7:", result7)
+
+#8: find all the instances of a word that contains 'x' followed by one or more 'o'
+pattern = r"\b\w*xo+\w*\b"
+result8 = re.findall(pattern, jack_ascii)
+print("Exercise 8:", result8)
+
+#9: replace all the instances of 'o' with 'X'
+pattern = r"o"
+result9 = re.sub(pattern, "X", jack_ascii)
+print("Exercise 9:", result9)
+
+#10: replace all the instances of a word that starts with 'd' and ends with 'd' with '***'
+pattern = r"\bd\w*d\b"
+result10 = re.sub(pattern, "***", jack_ascii)
+print("Exercise 10:", result10)
